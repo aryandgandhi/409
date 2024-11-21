@@ -24,7 +24,7 @@ function RecipeForm({ addRecipe }) {
       ingredients: recipe.ingredients.split(',').map(ing => ing.trim()),
     };
 
-    axios.post('http://localhost:3000/recipes', newRecipe)
+    axios.post('http://localhost:5002/recipes', newRecipe)
       .then(response => {
         addRecipe(response.data);
         setRecipe({ title: '', ingredients: '', instructions: '' });
