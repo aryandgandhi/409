@@ -1,21 +1,42 @@
-// server.js
-
 const Recipe = require('./models');
 const express = require('express');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
 const app = express();
 
 // Use cors middleware
 app.use(cors());
-
-
-// Middleware to parse JSON
 app.use(express.json());
 
-// Basic route to test the server
+// In-memory store for users
+const users = [];
+
+// Basic route
 app.get('/', (req, res) => {
   res.send('Welcome to RecipeCraft API!');
 });
+
+// Register
+app.post('/register', (req, res) => {
+  const { username, password } = req.body;
+  const existingUser = users.find(u => u.username === username);
+  if (existingUser) {
+    return res.status(400).json({ message: 'User already exists' });
+  }
+  users.push({ username, password });
+  res.json({ message: 'User registered successfully' });
+});
+
+// Login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const user = users.find(u => u.username === username && u.password === password);
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid credentials' });
+  }
+  res.json({ message: 'Login successful' });
+});
+
+
 
 // Create a new recipe
 app.post('/recipes', async (req, res) => {
