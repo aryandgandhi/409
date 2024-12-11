@@ -24,7 +24,7 @@ function RecipeForm({ addRecipe }) {
       ingredients: recipe.ingredients.split(',').map(ing => ing.trim()),
     };
 
-    axios.post('http://localhost:5002/recipes', newRecipe)
+    axios.post('https://four09-backend-ejlu.onrender.com/recipes', newRecipe)
       .then(response => {
         addRecipe(response.data);
         setRecipe({ title: '', ingredients: '', instructions: '' });

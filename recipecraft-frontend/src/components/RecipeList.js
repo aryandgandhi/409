@@ -14,7 +14,7 @@
 
 //   // Fetch recipes from the backend
 //   const fetchRecipes = () => {
-//     axios.get('http://localhost:5002/recipes')
+//     axios.get('https://four09-backend-ejlu.onrender.com/recipes')
 //       .then(response => {
 //         setRecipes(response.data);
 //         setFilteredRecipes(response.data); // Initialize filtered recipes
@@ -24,7 +24,7 @@
 
 //   // Delete a recipe by ID
 //   const deleteRecipe = (id) => {
-//     axios.delete(`http://localhost:5002/recipes/${id}`)
+//     axios.delete(`https://four09-backend-ejlu.onrender.com/recipes/${id}`)
 //       .then(() => {
 //         // Update the recipes state by removing the deleted recipe
 //         const updatedRecipes = recipes.filter(recipe => recipe._id !== id);
@@ -113,7 +113,7 @@ function RecipeList({ selectRecipe }) {
 
   // Fetch user recipes from the backend
   const fetchRecipes = () => {
-    axios.get('http://localhost:5002/recipes')
+    axios.get('https://four09-backend-ejlu.onrender.com/recipes')
       .then(response => {
         setRecipes(response.data);
         setFilteredRecipes(response.data); // Initialize filtered recipes
@@ -174,7 +174,7 @@ function RecipeList({ selectRecipe }) {
       setFilteredRecipes(filteredRecipes.filter(recipe => recipe._id !== id));
       setApiRecipe(null);
     } else {
-      axios.delete(`http://localhost:5002/recipes/${id}`)
+      axios.delete(`https://four09-backend-ejlu.onrender.com/recipes/${id}`)
         .then(() => {
           const updatedRecipes = recipes.filter(recipe => recipe._id !== id);
           setRecipes(updatedRecipes);

@@ -8,7 +8,7 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:5002/register`, {
+    const res = await fetch(`https://four09-backend-ejlu.onrender.com/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
